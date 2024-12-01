@@ -1,0 +1,24 @@
+use axios .get(url...).then(res => etc etc)
+
+here I put the search comp in a different comp so we'll have to send the lyrics back to the parent:
+
+
+in Appjs (parent):
+create the useState for parent's lyricsP and errorP
+create fn:
+fn handleLyricsFC(l){setLyricsP(l)}
+fn handleErrorFC(e){setErrorP(e)}
+* then when we use <Search/> we add as a prop: sendLyrics = {handleLyricsFC}  
+sendError = {handleErrorFC}
+//these being the functions above that will be executed to set our parent's value
+
+
+in Searchjs (child):
+from the get go set as a prop in the main function the name of the props we disposed before, here:
+{sendLyrics, sendError}
+now with useEffect second parameter of errorMsg and lyrics. so that it executes when that change we put the props and pass the values in the function:
+sendLyrics(lyrics)
+sendError(errorMsg)
+
+
+EXTRA: to display lyrics wrap it in a <pre>, it looks like native from where it came
